@@ -16,9 +16,8 @@ export default function Home() {
     return (
         <div>
             <div className="flex h-screen">
-
                 {/* DeepSeek Sidebar */}
-                <Sidebar expand = { expand } setExpand = { setExpand } />
+                <Sidebar expand={expand} setExpand={setExpand} />
 
                 {/* Mobile View */}
                 <div className="flex-1 flex flex-col items-center justify-center px-4 pb-8 bg-[#292a2d] text-white relative">
@@ -55,13 +54,15 @@ export default function Home() {
                         </>
                     ) : (
                         <div>
-                            <Message role = "user" content = "What Is NextJs" /> 
+                            <Message role="user" content="What Is NextJs" />
                         </div>
                     )}
 
                     {/* Prompt Box */}
-                    <PromptBox isloading = { loading } setIsLoading = { setLoading } />
-                    <p className="text-xs absolute bottom-1 text-gray-500">AI-Generated, For Reference Only</p>
+                    <PromptBox isloading={loading} setIsLoading={setLoading} />
+                    <p className="text-xs absolute bottom-1 text-gray-500">
+                        AI-Generated, For Reference Only
+                    </p>
                 </div>
             </div>
         </div>

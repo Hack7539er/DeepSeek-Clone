@@ -1,12 +1,7 @@
-### Enviroment Variables ###
-.env
-/.env
-.env*
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-### Dependencies Folders And Files ###
-node_modules
-.venv
-venv
+# dependencies
+/node_modules
 /.pnp
 .pnp.*
 .yarn/*
@@ -15,30 +10,32 @@ venv
 !.yarn/releases
 !.yarn/versions
 
-### IDE Configurations Or Editor(Code Editor) ###
-.vscode
-.idea
+# testing
+/coverage
 
-### Cache Folder And Files ###
-/.next
-next
-next*
-__py_cache__
+# next.js
+/.next/
+/out/
 
-### Production ###
+# production
 /build
-build*
-build
-dist
-/dist
-dist*
 
-### Misc ###
+# misc
 .DS_Store
 *.pem
 
-### Debug Log Files ###
+# debug
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
+
+# env files (can opt-in for committing if needed)
+.env*
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts

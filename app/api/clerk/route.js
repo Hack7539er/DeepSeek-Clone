@@ -3,7 +3,6 @@ import connectToDatabase from "@/lib/Database";
 import UserModel from "@/models/User.Model";
 import Configs from "@/config/Configs";
 import { headers } from "next/headers";
-import { User } from "@clerk/nextjs/server";
 import { NextRequest } from "next/server";
 
 export async function POST(request) {

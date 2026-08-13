@@ -5,6 +5,7 @@ import Image from "next/image";
 import Sidebar from "@/components/Sidebar.jsx";
 import { assets } from "@/assets/assets.js";
 import PromptBox from "@/components/PromptBox";
+import Message from "@/components/Message";
 
 export default function Home() {
     const [expand, setExpand] = useState(false);
@@ -53,7 +54,9 @@ export default function Home() {
                             </p>
                         </>
                     ) : (
-                        <div></div>
+                        <div>
+                            <Message role = "user" content = "What Is NextJs" /> 
+                        </div>
                     )}
 
                     {/* Prompt Box */}

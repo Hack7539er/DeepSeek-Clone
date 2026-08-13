@@ -6,7 +6,7 @@ const ChatSchema = new mongoose.Schema(
             type: String,
             required: true
         },
-        message: [
+        messages: [
             {
                 role: { type: String, required: true },
                 content: { type: String, required: true },

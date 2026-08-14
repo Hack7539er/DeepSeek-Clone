@@ -4,10 +4,11 @@ import { getAuth } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 
 export async function POST(request) {
-
+    
     try {
 
         const { userId } = getAuth(request);
+        const { chatId } = await request.json();
 
         if (!userId) return NextResponse.json(
             {
@@ -16,34 +17,31 @@ export async function POST(request) {
             }
         );
 
-        const chatData = {
-            userId,
-            name: "New Chat",
-            messages: [],
-        };
-
-        console.log("Chat Data Object: ", chatData);
-        console.log("User Id: ", userId);
+        else if (!chatId) return NextResponse.json(
+            {
+                success: false,
+                message: "Error: Chat Not Found"
+            }
+        );
 
         await connectToDatabase();
 
-        await ChatModel.create(chatData);
+        await ChatModel.deleteOne({_id: chatId, userId });
 
         return NextResponse.json(
             {
                 success: true,
-                message: "Chat Created"
+                message: "Chat Deleted Successfully"
             }
         );
-         
-    } catch (Error) {
 
-        console.log("Error: Chat Creation Failed. Exception: ", Error);
+        
+    } catch (Error) {
 
         return NextResponse.json(
             {
                 success: false,
-                message: `Error: Chat Creation Failed. Exception:${Error}`
+                message: "Error: Chat Deleting Failed. Exception: ${Error}"
             }
         );
     }

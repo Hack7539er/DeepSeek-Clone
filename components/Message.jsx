@@ -1,7 +1,23 @@
 import { assets } from "@/assets/assets";
+import { useEffect } from "react";
 import Image from "next/image";
+import toast from "react-hot-toast";
+import Markdown from "react-markdown";
+import Prism from "prismjs";
 
 const Message = ({ role, content }) => {
+
+    useEffect(() => {
+        Prism.highlightAll();
+    }, [content]);
+
+
+    const copyMessage = () => {
+
+        navigator.clipboard.writeText(content);
+        toast.success("Message Copied To Clipboard");
+    }
+
     return (
         <div className="flex flex-col items-center w-full max-w-3x text-sm">
             <div
@@ -20,6 +36,7 @@ const Message = ({ role, content }) => {
                                         className="w-4 cursor-pointer"
                                         src={assets.copy_icon}
                                         alt="Copy Icon"
+                                        onClick = {copyMessage}
                                     />
                                     <Image
                                         className="w-4 cursor-pointer"
@@ -33,6 +50,7 @@ const Message = ({ role, content }) => {
                                         className="w-4 cursor-pointer"
                                         src={assets.copy_icon}
                                         alt="Copy Icon"
+                                        onClick = {copyMessage}
                                     />
                                     <Image
                                         className="w-4 cursor-pointer"
@@ -63,7 +81,9 @@ const Message = ({ role, content }) => {
                                 alt="Logo Icon"
                             />
                             <div className="space-y-4 w-full overflow-scroll">
-                                {content}
+                                <Markdown>
+                                    { content }
+                                </Markdown>
                             </div>
                         </>
                     )}

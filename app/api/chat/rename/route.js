@@ -1,3 +1,4 @@
+import connectToDatabase from "@/lib/Database";
 import ChatModel from "@/models/Chat.Model";
 import { getAuth } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
@@ -17,6 +18,8 @@ export async function POST(request) {
 
         const { chatId, name } = await request.json();
 
+        await connectToDatabase();
+
         await ChatModel.findOneAndUpdate({ _id: chatId, userId }, { name });
 
         return NextResponse.json(
@@ -30,7 +33,7 @@ export async function POST(request) {
         return NextResponse.json(
             {
                 success: false,
-                message: "Error: Chat Renaming Failed. Exception: ${Error}"
+                message: `Error: Chat Renaming Failed. Exception: ${Error}`
             }
         );
     }

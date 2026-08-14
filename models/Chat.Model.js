@@ -2,10 +2,7 @@ import mongoose from "mongoose";
 
 const ChatSchema = new mongoose.Schema(
     {
-        _id: {
-            type: String,
-            required: true
-        },
+        name: { type: String, required: true} ,
         messages: [
             {
                 role: { type: String, required: true },
@@ -19,6 +16,6 @@ const ChatSchema = new mongoose.Schema(
 );
 
 
-const ChatModel = mongoose.models.chat || mongoose.model("user", ChatSchema);
+const ChatModel = mongoose.models.chats || mongoose.model("chats", ChatSchema);
 
 export default ChatModel;

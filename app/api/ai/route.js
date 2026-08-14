@@ -42,7 +42,7 @@ const ai = new GoogleGenAI({
 
 export async function POST(request) {
     try {
-        const { userId } = getAuth();
+        const { userId } = getAuth(request);
 
         if (!userId) {
             return NextResponse.json(
